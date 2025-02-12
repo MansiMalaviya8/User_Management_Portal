@@ -43,7 +43,7 @@ const Signup = () => {
     }
 
     try {
-      await axios.post(API_url, {
+      await axios.post(`${API_url}/`, {
         id: nanoid(),
         username: values.username,
         email: values.email,
@@ -64,7 +64,7 @@ const Signup = () => {
     }
 
     try {
-      await axios.put(`${API_url}${editingUser.id}`, {
+      await axios.put(`${API_url}/${editingUser.id}`, {
         username: values.username,
         email: values.email,
         password: values.password,
@@ -80,7 +80,7 @@ const Signup = () => {
   const handleApi = async () => {
     try {
       const response = await axios.get(API_url);
-      setData(response.data);
+      setData(response.data.user);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -88,7 +88,7 @@ const Signup = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${API_url}${id}`);
+      await axios.delete(`${API_url}/${id}`);
       handleApi();
     } catch (error) {
       console.error("Error deleting user:", error);
