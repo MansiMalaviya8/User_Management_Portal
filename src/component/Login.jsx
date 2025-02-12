@@ -35,7 +35,7 @@ const Login = () => {
       return;
     }
 
-    const user = datalist.find(
+    const user = datalist.user.find(
       (data) => data.username === username && data.password === password
     );
     if (user) {
